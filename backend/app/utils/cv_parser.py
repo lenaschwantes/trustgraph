@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from pathlib import Path
+from app.agents.skill_extractor import extract_skills_from_cv
 
 
 def parse_cv_html(profile_id: str) -> dict:
@@ -19,14 +20,6 @@ def parse_cv_html(profile_id: str) -> dict:
     name = soup.find('h1').text if soup.find('h1') else "Unknown"
     role = soup.find('p').text if soup.find('p') else "Unknown"
     
-    # Extract skills
-    skills = []
-    skills_section = soup.find('h2', string='Skills')
-    if skills_section:
-        skills_list = skills_section.find_next('ul')
-        if skills_list:
-            skills = [li.text.strip() for li in skills_list.find_all('li')]
-    
     # Extract GitHub
     github = ""
     github_section = soup.find('h2', string='GitHub')
@@ -35,10 +28,14 @@ def parse_cv_html(profile_id: str) -> dict:
         if github_p:
             github = github_p.text.strip()
     
+    # Extract skills using AI
+    full_text = soup.get_text()
+    ai_skills = extract_skills_from_cv(full_text)
+    
     return {
         "id": profile_id,
         "name": name,
         "role": role,
-        "skills": skills,
+        "skills": ai_skills,  # Now using AI extraction
         "github": github
     }
