@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "lena",
+      "label": "Lena Garcia",
+      "role": "Data Engineer",
+      "skills": ["Python", "FastAPI", "LangChain", "SQL", "AWS"],
+      "verified": true
+    },
+    {
+      "id": "john",
+      "label": "John Smith",
+      "role": "Senior ML Engineer",
+      "skills": ["Python", "PyTorch", "LangChain", "FastAPI"],
+      "verified": true
+    },
+    {
+      "id": "maria",
+      "label": "Maria Santos",
+      "role": "Data Architect",
+      "skills": ["SQL", "Python", "Snowflake", "AWS"],
+      "verified": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "lena",
+      "target": "john",
+      "relationship": "worked_together",
+      "project": "EchoDocs",
+      "verified": true
+    },
+    {
+      "source": "lena",
+      "target": "maria",
+      "relationship": "worked_together",
+      "company": "EY Consulting",
+      "verified": true
+    }
+  ]
+}
