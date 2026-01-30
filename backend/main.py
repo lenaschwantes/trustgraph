@@ -3,9 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 from pathlib import Path
 
-from app.utils.cv_parser import parse_cv_html
-from app.agents.verifier import verify_github_contribution
-
 app = FastAPI(title="TrustGraph API")
 
 # CORS
@@ -41,15 +38,4 @@ def get_profile(profile_id: str):
     node = next((n for n in GRAPH_DATA["nodes"] if n["id"] == profile_id), None)
     if not node:
         return {"error": "Profile not found"}
-    
-    # Parse CV HTML for additional details
-    cv_data = parse_cv_html(profile_id)
-    
-    return {**node, **cv_data}
-
-
-@app.get("/verify/{github_username}/{repo_name}")
-async def verify_contribution(github_username: str, repo_name: str):
-    """Verify GitHub contribution"""
-    result = await verify_github_contribution(github_username, repo_name)
-    return result
+    return node
