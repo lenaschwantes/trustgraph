@@ -1,0 +1,318 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 
+ * DESIGN: "Cyber Trust" - Dark Futuristic Network
+ * 
+ * Color Philosophy:
+ * - Background: Deep space black with subtle blue gradient
+ * - Primary (Verified): Emerald green - represents trust and validation
+ * - Secondary (Connections): Electric blue - represents networking
+ * - Accent (Highlight): Cyan glow - for hover and interactions
+ * 
+ * Typography: Space Grotesk (display) + Inter (body)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom TrustGraph colors */
+  --color-verified: var(--verified);
+  --color-connection: var(--connection);
+  --color-glow: var(--glow);
+}
+
+:root {
+  /* TrustGraph Cyber Trust Theme - Dark Mode Default */
+  --radius: 0.75rem;
+  
+  /* Core colors - Dark futuristic */
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.95 0.01 260);
+  
+  /* Card with glassmorphism base */
+  --card: oklch(0.12 0.025 260 / 80%);
+  --card-foreground: oklch(0.95 0.01 260);
+  
+  /* Popover */
+  --popover: oklch(0.14 0.03 260 / 95%);
+  --popover-foreground: oklch(0.95 0.01 260);
+  
+  /* Primary - Emerald Green (Verified) */
+  --primary: oklch(0.7 0.2 160);
+  --primary-foreground: oklch(0.1 0.02 160);
+  
+  /* Secondary - Electric Blue (Connections) */
+  --secondary: oklch(0.6 0.2 250);
+  --secondary-foreground: oklch(0.98 0.01 250);
+  
+  /* Muted */
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.6 0.02 260);
+  
+  /* Accent - Cyan Glow */
+  --accent: oklch(0.75 0.15 195);
+  --accent-foreground: oklch(0.1 0.02 195);
+  
+  /* Destructive */
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  
+  /* Borders and inputs */
+  --border: oklch(0.3 0.03 260 / 50%);
+  --input: oklch(0.2 0.02 260 / 50%);
+  --ring: oklch(0.7 0.2 160);
+  
+  /* Charts */
+  --chart-1: oklch(0.7 0.2 160);
+  --chart-2: oklch(0.6 0.2 250);
+  --chart-3: oklch(0.75 0.15 195);
+  --chart-4: oklch(0.65 0.18 280);
+  --chart-5: oklch(0.7 0.15 140);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.1 0.025 260);
+  --sidebar-foreground: oklch(0.9 0.01 260);
+  --sidebar-primary: oklch(0.7 0.2 160);
+  --sidebar-primary-foreground: oklch(0.1 0.02 160);
+  --sidebar-accent: oklch(0.2 0.03 260);
+  --sidebar-accent-foreground: oklch(0.95 0.01 260);
+  --sidebar-border: oklch(0.25 0.03 260 / 50%);
+  --sidebar-ring: oklch(0.7 0.2 160);
+  
+  /* TrustGraph specific */
+  --verified: oklch(0.7 0.2 160);
+  --connection: oklch(0.6 0.2 250);
+  --glow: oklch(0.75 0.15 195);
+}
+
+/* Dark mode is default, but keeping for compatibility */
+.dark {
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.95 0.01 260);
+  --card: oklch(0.12 0.025 260 / 80%);
+  --card-foreground: oklch(0.95 0.01 260);
+  --popover: oklch(0.14 0.03 260 / 95%);
+  --popover-foreground: oklch(0.95 0.01 260);
+  --primary: oklch(0.7 0.2 160);
+  --primary-foreground: oklch(0.1 0.02 160);
+  --secondary: oklch(0.6 0.2 250);
+  --secondary-foreground: oklch(0.98 0.01 250);
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.6 0.02 260);
+  --accent: oklch(0.75 0.15 195);
+  --accent-foreground: oklch(0.1 0.02 195);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.3 0.03 260 / 50%);
+  --input: oklch(0.2 0.02 260 / 50%);
+  --ring: oklch(0.7 0.2 160);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1400px;
+    }
+  }
+  
+  /* Glassmorphism card */
+  .glass-card {
+    background: oklch(0.12 0.025 260 / 60%);
+    backdrop-filter: blur(20px);
+    border: 1px solid oklch(0.4 0.03 260 / 30%);
+    box-shadow: 
+      0 8px 32px oklch(0 0 0 / 40%),
+      inset 0 1px 0 oklch(1 0 0 / 5%);
+  }
+  
+  /* Glow effects */
+  .glow-green {
+    box-shadow: 
+      0 0 20px oklch(0.7 0.2 160 / 40%),
+      0 0 40px oklch(0.7 0.2 160 / 20%);
+  }
+  
+  .glow-blue {
+    box-shadow: 
+      0 0 20px oklch(0.6 0.2 250 / 40%),
+      0 0 40px oklch(0.6 0.2 250 / 20%);
+  }
+  
+  .glow-cyan {
+    box-shadow: 
+      0 0 20px oklch(0.75 0.15 195 / 40%),
+      0 0 40px oklch(0.75 0.15 195 / 20%);
+  }
+  
+  /* Text glow */
+  .text-glow-green {
+    text-shadow: 0 0 20px oklch(0.7 0.2 160 / 60%);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 20px oklch(0.6 0.2 250 / 60%);
+  }
+  
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      oklch(0.7 0.2 160),
+      oklch(0.6 0.2 250),
+      oklch(0.75 0.15 195)
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  /* Pulse animation for verified nodes */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px oklch(0.7 0.2 160 / 40%),
+        0 0 40px oklch(0.7 0.2 160 / 20%);
+    }
+    50% {
+      box-shadow: 
+        0 0 30px oklch(0.7 0.2 160 / 60%),
+        0 0 60px oklch(0.7 0.2 160 / 30%);
+    }
+  }
+  
+  .pulse-verified {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Network line animation */
+  @keyframes flow {
+    0% {
+      stroke-dashoffset: 100;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .animate-flow {
+    stroke-dasharray: 10 5;
+    animation: flow 2s linear infinite;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.1 0.02 260);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0.03 260);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0.03 260);
+}
